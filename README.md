@@ -67,8 +67,7 @@ void main() {
 
 ### ↔️ El Tooltip available positions
 
-<p align="center"><img src="https://raw.githubusercontent.com/marcelogil/el_tooltip/main/develop/images/placement.png" width="700"/></p>
+<p align="left"><img src="https://raw.githubusercontent.com/marcelogil/el_tooltip/main/develop/images/placement.png" width="700"/></p>
 
 
-El tooltip header image was created using macrovector illustration
-<a href="https://www.freepik.com/free-vector/mexican-element-set_5970756.htm#query=mexican&position=4&from_view=search&track=sph">Image by macrovector</a> on Freepik
+El tooltip header image was created using macrovector <a href="https://www.freepik.com/free-vector/mexican-element-set_5970756.htm#query=mexican&position=4&from_view=search&track=sph">macrovector</a> illustration on Freepik
