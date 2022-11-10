@@ -1,6 +1,6 @@
 name: el_tooltip
 description: ElTooltip - a smart positioned tooltip.
-version: 1.0.0
+version: 1.0.1
 homepage: https://github.com/marcelogil/el_tooltip
 
 environment:
