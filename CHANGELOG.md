@@ -1,3 +1,7 @@
+## 1.0.2
+
+* Updated: LICENSE.
+
 ## 1.0.1
 
 * Updated: LICENSE.
