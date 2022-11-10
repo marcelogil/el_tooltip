@@ -49,11 +49,12 @@ void main() {
 }
 ```
 
-[**Full example**](https://github.com/marcelogil/el_tooltip/main/example/lib/main.dart)
+[**Full example**](https://github.com/marcelogil/el_tooltip/blob/main/example/lib/main.dart)
 
 ### 🏷️ El Tooltip widget properties
 
-| Properties | Required | Default |  Description | | ----------------------- | -------- | ------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Properties | Required | Default |  Description |
+| ----------------------- | -------- | ------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | content   | true  |  | What will appear inside the tooltip. |
 | trigger   | true  |  | Widget that represent the button to activate the tooltip (no click method required). |
 | color     | false | `Colors.white` | Background color of the bubble and the arrow. |
