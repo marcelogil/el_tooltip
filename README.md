@@ -49,12 +49,11 @@ void main() {
 }
 ```
 
-[**Full example**](https://github.com/marcelogil/el_tooltip/master/example/lib/main.dart)
+[**Full example**](https://github.com/marcelogil/el_tooltip/main/example/lib/main.dart)
 
 ### 🏷️ El Tooltip widget properties
 
-| Properties | Required | Default |  Description |
-| ----------------------- | -------- | ------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Properties | Required | Default |  Description | | ----------------------- | -------- | ------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | content   | true  |  | What will appear inside the tooltip. |
 | trigger   | true  |  | Widget that represent the button to activate the tooltip (no click method required). |
 | color     | false | `Colors.white` | Background color of the bubble and the arrow. |
@@ -65,4 +64,10 @@ void main() {
 | showModal | false | `true` | Displays a fullscreen dark layer behind the tooltip. |
 | timeout   | false | `0` (only disappears on click) | How many seconds to wait for the tooltip to disappear. |
 
+### ↔️ El Tooltip available positions
+
 <p align="center"><img src="https://raw.githubusercontent.com/marcelogil/el_tooltip/main/develop/images/placement.png" width="700"/></p>
+
+
+El tooltip header image was created using macrovector illustration
+<a href="https://www.freepik.com/free-vector/mexican-element-set_5970756.htm#query=mexican&position=4&from_view=search&track=sph">Image by macrovector</a> on Freepik
