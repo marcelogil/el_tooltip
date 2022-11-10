@@ -13,8 +13,6 @@ void main() {
     color: Color(0XFFA5A53A),
   );
 
-  //FFF8C7
-
   runApp(
     MaterialApp(
       title: 'ElTooltip Demo',
