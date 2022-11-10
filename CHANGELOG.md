@@ -1,3 +1,7 @@
+## 1.0.3
+
+* Added: more documentation.
+
 ## 1.0.2
 
 * Updated: LICENSE.

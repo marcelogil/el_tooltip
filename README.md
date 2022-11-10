@@ -17,14 +17,14 @@ ElTooltip - a smart positioned tooltip
 
 ### 🍭 Installation
 
-Add to your `pubspec.yaml`:
+Add to your `pubspec.yaml`
 
 ```yaml
 dependencies:
   el_tooltip: <last_version>
 ```
 
-Import the library and call the Widget ElTooltip() with the required fields `trigger` and `content`:
+Import the library and call the Widget ElTooltip() with the required fields `trigger` and `content`
 
 
 ```dart

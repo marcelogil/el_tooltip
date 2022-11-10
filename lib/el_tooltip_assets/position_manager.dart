@@ -7,11 +7,22 @@ import 'tooltip_elements_display.dart';
 /// Verifies if the desired position fits the screen.
 /// If it doesn't the position changes automatically.
 class PositionManager {
+  /// [arrowBox] width, height, position x and y of the arrow.
   final ElementBox arrowBox;
+
+  /// [triggerBox] width, height, position x and y of the trigger.
   final ElementBox triggerBox;
+
+  /// [overlayBox] width, height, position x and y of the overlay.
   final ElementBox overlayBox;
+
+  /// [screenSize] width and height of the current screen.
   final ElementBox screenSize;
+
+  /// [distance] between the tooltip and the trigger button.
   final double distance;
+
+  /// [radius] border radius amount of the tooltip.
   final double radius;
 
   PositionManager({

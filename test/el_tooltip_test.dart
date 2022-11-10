@@ -1,5 +1,2 @@
-import 'package:flutter_test/flutter_test.dart';
-
-import 'package:el_tooltip/el_tooltip.dart';
-
+/// Unit Test for the tooltip (not done)
 void main() {}

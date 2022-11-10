@@ -2,6 +2,7 @@ import 'package:flutter/widgets.dart';
 
 /// Design of the corner triangle that appears attached to the tooltip
 class Corner extends CustomPainter {
+  /// [color] of the arrow.
   final Color color;
 
   Corner({this.color = const Color(0xff000000)});
