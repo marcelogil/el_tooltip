@@ -1,4 +1,4 @@
-<p align="center"><img src="https://raw.githubusercontent.com/marcelogil/el_tooltip/develop/images/header.png" width="700"/></p>
+<p align="center"><img src="https://raw.githubusercontent.com/marcelogil/el_tooltip/main/develop/images/header.png" width="700"/></p>
 <h1 align="center"> 
 ElTooltip - a smart positioned tooltip
 </h1>
@@ -65,4 +65,4 @@ void main() {
 | showModal | false | `true` | Displays a fullscreen dark layer behind the tooltip. |
 | timeout   | false | `0` (only disappears on click) | How many seconds to wait for the tooltip to disappear. |
 
-<p align="center"><img src="https://raw.githubusercontent.com/marcelogil/el_tooltip/develop/images/placement.png" width="700"/></p>
+<p align="center"><img src="https://raw.githubusercontent.com/marcelogil/el_tooltip/main/develop/images/placement.png" width="700"/></p>
