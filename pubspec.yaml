@@ -1,7 +1,7 @@
 name: el_tooltip
-description: Show a widget element inside a smart tooltip.
-version: 0.0.1
-homepage:
+description: ElTooltip - a smart positioned tooltip.
+version: 1.0.0
+homepage: https://github.com/marcelogil/el_tooltip
 
 environment:
   sdk: '>=2.18.4 <3.0.0'
