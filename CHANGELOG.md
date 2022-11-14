@@ -1,3 +1,9 @@
+## 1.0.4
+
+* Updated: Trigger is now called child to use best conventions.
+* Updated: Example page.
+* Added: Widget testing.
+
 ## 1.0.3
 
 * Added: more documentation.

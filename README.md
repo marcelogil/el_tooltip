@@ -24,7 +24,7 @@ dependencies:
   el_tooltip: <last_version>
 ```
 
-Import the library and call the Widget ElTooltip() with the required fields `trigger` and `content`
+Import the library and call the Widget ElTooltip() with the required fields `child` and `content`
 
 
 ```dart
@@ -40,7 +40,7 @@ void main() {
     home: const SafeArea(
       child: Center(
         child: ElTooltip(
-          trigger: Icon(Icons.info_outline),
+          child: Icon(Icons.info_outline),
           content: Text('This is a tooltip'),
         ),
       ),
@@ -56,9 +56,9 @@ void main() {
 | Properties | Required | Default |  Description |
 | ----------------------- | -------- | ------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | content   | true  |  | What will appear inside the tooltip. |
-| trigger   | true  |  | Widget that represent the button to activate the tooltip (no click method required). |
+| child     | true  |  | Widget that represent the button to activate the tooltip (no click method required). |
 | color     | false | `Colors.white` | Background color of the bubble and the arrow. |
-| distance  | false | `10.0` | Space between the trigger button and the tooltip. |
+| distance  | false | `10.0` | Space between the child button and the tooltip. |
 | padding   | false | `14.0` | Tooltip padding around the content widget. |
 | position  | false | `topCenter` | Desired position based on the Enum `ElTooltipPosition`. Can be `topStart`, `topCenter`, `topEnd`, `rightStart`, `rightCenter`,` rightEnd`, `bottomStart`, `bottomCenter`, `bottomEnd`, `leftStart`, `leftCenter`, `leftEnd`, |
 | radius    | false | `8.0`  | Border radius of the tooltip. |

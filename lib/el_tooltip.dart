@@ -1,15 +1,15 @@
 library el_tooltip;
 
 import 'package:flutter/material.dart';
-import 'el_tooltip_assets/arrow.dart';
-import 'el_tooltip_assets/bubble.dart';
-import 'el_tooltip_assets/element_box.dart';
-import 'el_tooltip_assets/enum/el_tooltip_position.dart';
-import 'el_tooltip_assets/modal.dart';
-import 'el_tooltip_assets/position_manager.dart';
-import 'el_tooltip_assets/tooltip_elements_display.dart';
+import 'src/arrow.dart';
+import 'src/bubble.dart';
+import 'src/element_box.dart';
+import 'src/enum/el_tooltip_position.dart';
+import 'src/modal.dart';
+import 'src/position_manager.dart';
+import 'src/tooltip_elements_display.dart';
 
-export 'el_tooltip_assets/enum/el_tooltip_position.dart';
+export 'src/enum/el_tooltip_position.dart';
 
 /// Widget that displays a tooltip
 /// It takes a widget as the trigger and a widget as the content
@@ -17,8 +17,8 @@ class ElTooltip extends StatefulWidget {
   /// [content] Widget that appears inside the tooltip.
   final Widget content;
 
-  /// [trigger] Widget that will trigger the tooltip to appear.
-  final Widget trigger;
+  /// [child] Widget that will trigger the tooltip to appear.
+  final Widget child;
 
   /// [color] Background color of the tooltip and the arrow.
   final Color color;
@@ -45,7 +45,7 @@ class ElTooltip extends StatefulWidget {
 
   const ElTooltip({
     required this.content,
-    required this.trigger,
+    required this.child,
     this.color = Colors.white,
     this.distance = 10.0,
     this.padding = 14.0,
@@ -204,7 +204,7 @@ class _ElTooltipState extends State<ElTooltip> with WidgetsBindingObserver {
                       ? _hideOverlay()
                       : _showOverlay(context);
                 },
-                child: widget.trigger,
+                child: widget.child,
               ),
             ),
           ],
@@ -235,7 +235,7 @@ class _ElTooltipState extends State<ElTooltip> with WidgetsBindingObserver {
       onTap: () {
         _overlayEntry != null ? _hideOverlay() : _showOverlay(context);
       },
-      child: widget.trigger,
+      child: widget.child,
     );
   }
 }

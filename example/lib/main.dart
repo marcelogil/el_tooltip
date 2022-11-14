@@ -30,19 +30,19 @@ void main() {
                 children: const [
                   ElTooltip(
                     content: tooltipContent,
-                    trigger: tooltipIcon,
+                    child: tooltipIcon,
                     color: Color(0XFFEA4747),
                   ),
                   Spacer(),
                   ElTooltip(
                     content: tooltipContent,
-                    trigger: tooltipIcon,
+                    child: tooltipIcon,
                     color: Color(0XFFEA4747),
                   ),
                   Spacer(),
                   ElTooltip(
                     content: tooltipContent,
-                    trigger: tooltipIcon,
+                    child: tooltipIcon,
                     color: Color(0XFFEA4747),
                   ),
                 ],
@@ -51,19 +51,19 @@ void main() {
                 children: const [
                   ElTooltip(
                     content: tooltipContent,
-                    trigger: tooltipIcon,
+                    child: tooltipIcon,
                     color: Color(0XFFEA4747),
                   ),
                   Spacer(),
                   ElTooltip(
                     content: tooltipContent,
-                    trigger: tooltipIcon,
+                    child: tooltipIcon,
                     color: Color(0XFFEA4747),
                   ),
                   Spacer(),
                   ElTooltip(
                     content: tooltipContent,
-                    trigger: tooltipIcon,
+                    child: tooltipIcon,
                     color: Color(0XFFEA4747),
                   ),
                 ],
@@ -72,19 +72,19 @@ void main() {
                 children: const [
                   ElTooltip(
                     content: tooltipContent,
-                    trigger: tooltipIcon,
+                    child: tooltipIcon,
                     color: Color(0XFFEA4747),
                   ),
                   Spacer(),
                   ElTooltip(
                     content: tooltipContent,
-                    trigger: tooltipIcon,
+                    child: tooltipIcon,
                     color: Color(0XFFEA4747),
                   ),
                   Spacer(),
                   ElTooltip(
                     content: tooltipContent,
-                    trigger: tooltipIcon,
+                    child: tooltipIcon,
                     color: Color(0XFFEA4747),
                   ),
                 ],
