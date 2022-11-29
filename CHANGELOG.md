@@ -1,3 +1,7 @@
+## 1.0.5
+
+* Fix: Problem with setState in big lists.
+
 ## 1.0.4
 
 * Updated: Trigger is now called child to use best conventions.

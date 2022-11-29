@@ -95,13 +95,15 @@ class _ElTooltipState extends State<ElTooltip> with WidgetsBindingObserver {
   /// Measures the hidden tooltip after it's loaded with _loadHiddenOverlay(_)
   void _getHiddenOverlaySize(context) {
     RenderBox box = _widgetKey.currentContext?.findRenderObject() as RenderBox;
-    setState(() {
-      _overlayBox = ElementBox(
-        w: box.size.width,
-        h: box.size.height,
-      );
-      _overlayEntryHidden?.remove();
-    });
+    if (mounted) {
+      setState(() {
+        _overlayBox = ElementBox(
+          w: box.size.width,
+          h: box.size.height,
+        );
+        _overlayEntryHidden?.remove();
+      });
+    }
   }
 
   /// Loads the tooltip without opacity to measure the rendered size
@@ -129,14 +131,18 @@ class _ElTooltipState extends State<ElTooltip> with WidgetsBindingObserver {
 
   /// Measures the size of the trigger widget
   ElementBox _getTriggerSize() {
-    final renderBox = context.findRenderObject() as RenderBox;
-    final offset = renderBox.localToGlobal(Offset.zero);
-    return ElementBox(
-      w: renderBox.size.width,
-      h: renderBox.size.height,
-      x: offset.dx,
-      y: offset.dy,
-    );
+    if (mounted) {
+      final renderBox = context.findRenderObject() as RenderBox;
+      final offset = renderBox.localToGlobal(Offset.zero);
+      return ElementBox(
+        w: renderBox.size.width,
+        h: renderBox.size.height,
+        x: offset.dx,
+        y: offset.dy,
+      );
+    }
+    _hideOverlay();
+    return ElementBox(w: 0, h: 0, x: 0, y: 0);
   }
 
   /// Measures the size of the screen to calculate possible overflow
