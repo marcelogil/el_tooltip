@@ -6,10 +6,12 @@ import 'src/bubble.dart';
 import 'src/element_box.dart';
 import 'src/enum/el_tooltip_position.dart';
 import 'src/modal.dart';
+import 'src/modal_style.dart';
 import 'src/position_manager.dart';
 import 'src/tooltip_elements_display.dart';
 
 export 'src/enum/el_tooltip_position.dart';
+export 'src/modal_style.dart';
 
 /// Widget that displays a tooltip
 /// It takes a widget as the trigger and a widget as the content
@@ -39,6 +41,8 @@ class ElTooltip extends StatefulWidget {
   /// [showModal] Shows a dark layer behind the tooltip.
   final bool showModal;
 
+  final ElTooltipModalStyle? modalStyle;
+
   /// [timeout] Number of seconds until the tooltip disappears automatically
   /// The default value is 0 (zero) which means it never disappears.
   final int timeout;
@@ -52,6 +56,7 @@ class ElTooltip extends StatefulWidget {
     this.position = ElTooltipPosition.topCenter,
     this.radius = 8.0,
     this.showModal = true,
+    this.modalStyle,
     this.timeout = 0,
     super.key,
   });
@@ -173,8 +178,7 @@ class _ElTooltipState extends State<ElTooltip> with WidgetsBindingObserver {
         return Stack(
           children: [
             Modal(
-              color: Colors.black87,
-              opacity: 0.7,
+              style: widget.modalStyle ?? const ElTooltipModalStyle(),
               visible: widget.showModal,
               onTap: () {
                 _hideOverlay();

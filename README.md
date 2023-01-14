@@ -63,6 +63,7 @@ void main() {
 | position  | false | `topCenter` | Desired position based on the Enum `ElTooltipPosition`. Can be `topStart`, `topCenter`, `topEnd`, `rightStart`, `rightCenter`,` rightEnd`, `bottomStart`, `bottomCenter`, `bottomEnd`, `leftStart`, `leftCenter`, `leftEnd`, |
 | radius    | false | `8.0`  | Border radius of the tooltip. |
 | showModal | false | `true` | Displays a fullscreen dark layer behind the tooltip. |
+| modalStyle | false | `ElTooltipModalStyle()` | Style of fullscreen dark layer behind the tooltip. |
 | timeout   | false | `0` (only disappears on click) | How many seconds to wait for the tooltip to disappear. |
 
 ### ↔️ El Tooltip available positions
