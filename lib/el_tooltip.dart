@@ -108,7 +108,7 @@ class _ElTooltipState extends State<ElTooltip> with WidgetsBindingObserver {
 
   /// Loads the tooltip without opacity to measure the rendered size
   void _loadHiddenOverlay(_) {
-    OverlayState? overlayStateHidden = Overlay.of(context);
+    OverlayState overlayStateHidden = Overlay.of(context);
     _overlayEntryHidden = OverlayEntry(
       builder: (context) {
         WidgetsBinding.instance
@@ -126,7 +126,7 @@ class _ElTooltipState extends State<ElTooltip> with WidgetsBindingObserver {
         );
       },
     );
-    overlayStateHidden?.insert(_overlayEntryHidden!);
+    overlayStateHidden.insert(_overlayEntryHidden!);
   }
 
   /// Measures the size of the trigger widget
@@ -218,7 +218,7 @@ class _ElTooltipState extends State<ElTooltip> with WidgetsBindingObserver {
       },
     );
 
-    overlayState?.insert(_overlayEntry!);
+    overlayState.insert(_overlayEntry!);
 
     // Add timeout for the tooltip to disapear after a few seconds
     if (widget.timeout > 0) {
