@@ -1,3 +1,7 @@
+## 1.0.6
+
+* Fix: Updated with compatibility for Flutter 3.7.
+
 ## 1.0.5
 
 * Fix: Problem with setState in big lists.
