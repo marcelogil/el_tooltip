@@ -1,8 +1,6 @@
 import 'package:el_tooltip/el_tooltip.dart';
 import 'package:el_tooltip/src/bubble.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 /// Unit Test for the tooltip (not done)
