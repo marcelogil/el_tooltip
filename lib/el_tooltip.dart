@@ -14,14 +14,27 @@ export 'src/enum/el_tooltip_position.dart';
 /// Widget that displays a tooltip
 /// It takes a widget as the trigger and a widget as the content
 class ElTooltip extends StatefulWidget {
-  /// [content] Widget that appears inside the tooltip.
-  final Widget content;
+  const ElTooltip({
+    required this.content,
+    required this.child,
+    this.color = Colors.white,
+    this.distance = 10.0,
+    this.padding = 14.0,
+    this.position = ElTooltipPosition.topCenter,
+    this.radius = 8.0,
+    this.showModal = true,
+    this.timeout = 0,
+    super.key,
+  });
 
   /// [child] Widget that will trigger the tooltip to appear.
   final Widget child;
 
   /// [color] Background color of the tooltip and the arrow.
   final Color color;
+
+  /// [content] Widget that appears inside the tooltip.
+  final Widget content;
 
   /// [distance] Space between the tooltip and the trigger.
   final double distance;
@@ -43,31 +56,31 @@ class ElTooltip extends StatefulWidget {
   /// The default value is 0 (zero) which means it never disappears.
   final int timeout;
 
-  const ElTooltip({
-    required this.content,
-    required this.child,
-    this.color = Colors.white,
-    this.distance = 10.0,
-    this.padding = 14.0,
-    this.position = ElTooltipPosition.topCenter,
-    this.radius = 8.0,
-    this.showModal = true,
-    this.timeout = 0,
-    super.key,
-  });
   @override
   State<ElTooltip> createState() => _ElTooltipState();
 }
 
 /// _ElTooltipState extends ElTooltip class
 class _ElTooltipState extends State<ElTooltip> with WidgetsBindingObserver {
-  final GlobalKey _widgetKey = GlobalKey();
-  OverlayEntry? _overlayEntryHidden;
-  OverlayEntry? _overlayEntry;
-  ElementBox get _screenSize => _getScreenSize();
-  ElementBox get _triggerBox => _getTriggerSize();
-  ElementBox _overlayBox = ElementBox(h: 0.0, w: 0.0);
   final ElementBox _arrowBox = ElementBox(h: 10.0, w: 16.0);
+  ElementBox _overlayBox = ElementBox(h: 0.0, w: 0.0);
+  OverlayEntry? _overlayEntry;
+  OverlayEntry? _overlayEntryHidden;
+  final GlobalKey _widgetKey = GlobalKey();
+
+  /// Automatically hide the overlay when the screen dimension changes
+  /// or when the user scrolls. This is done to avoid displacement.
+  @override
+  void didChangeMetrics() {
+    _hideOverlay();
+  }
+
+  /// Dispode the observer
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    super.dispose();
+  }
 
   /// Init state and trigger the hidden overlay to measure its size
   @override
@@ -78,19 +91,9 @@ class _ElTooltipState extends State<ElTooltip> with WidgetsBindingObserver {
     WidgetsBinding.instance.addObserver(this);
   }
 
-  /// Dispode the observer
-  @override
-  void dispose() {
-    WidgetsBinding.instance.removeObserver(this);
-    super.dispose();
-  }
+  ElementBox get _screenSize => _getScreenSize();
 
-  /// Automatically hide the overlay when the screen dimension changes
-  /// or when the user scrolls. This is done to avoid displacement.
-  @override
-  void didChangeMetrics() {
-    _hideOverlay();
-  }
+  ElementBox get _triggerBox => _getTriggerSize();
 
   /// Measures the hidden tooltip after it's loaded with _loadHiddenOverlay(_)
   void _getHiddenOverlaySize(context) {
@@ -108,7 +111,7 @@ class _ElTooltipState extends State<ElTooltip> with WidgetsBindingObserver {
 
   /// Loads the tooltip without opacity to measure the rendered size
   void _loadHiddenOverlay(_) {
-    OverlayState overlayStateHidden = Overlay.of(context);
+    OverlayState? overlayStateHidden = Overlay.of(context);
     _overlayEntryHidden = OverlayEntry(
       builder: (context) {
         WidgetsBinding.instance
@@ -126,7 +129,10 @@ class _ElTooltipState extends State<ElTooltip> with WidgetsBindingObserver {
         );
       },
     );
-    overlayStateHidden.insert(_overlayEntryHidden!);
+
+    if (overlayStateHidden != null) {
+      overlayStateHidden.insert(_overlayEntryHidden!);
+    }
   }
 
   /// Measures the size of the trigger widget
@@ -218,7 +224,9 @@ class _ElTooltipState extends State<ElTooltip> with WidgetsBindingObserver {
       },
     );
 
-    overlayState.insert(_overlayEntry!);
+    if (overlayState != null) {
+      overlayState.insert(_overlayEntry!);
+    }
 
     // Add timeout for the tooltip to disapear after a few seconds
     if (widget.timeout > 0) {
