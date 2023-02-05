@@ -1,3 +1,7 @@
+## 1.0.8
+
+* Fix: Updated NULL check with correct object.
+
 ## 1.0.7
 
 * Fix: Updated compatibility bug with Flutter 3.7.

@@ -130,7 +130,7 @@ class _ElTooltipState extends State<ElTooltip> with WidgetsBindingObserver {
       },
     );
 
-    if (overlayStateHidden != null) {
+    if (_overlayEntryHidden != null) {
       overlayStateHidden.insert(_overlayEntryHidden!);
     }
   }
@@ -224,7 +224,7 @@ class _ElTooltipState extends State<ElTooltip> with WidgetsBindingObserver {
       },
     );
 
-    if (overlayState != null) {
+    if (_overlayEntry != null) {
       overlayState.insert(_overlayEntry!);
     }
 
