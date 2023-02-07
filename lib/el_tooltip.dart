@@ -131,7 +131,7 @@ class _ElTooltipState extends State<ElTooltip> with WidgetsBindingObserver {
     );
 
     if (_overlayEntryHidden != null) {
-      overlayStateHidden.insert(_overlayEntryHidden!);
+      overlayStateHidden?.insert(_overlayEntryHidden!);
     }
   }
 
@@ -225,7 +225,7 @@ class _ElTooltipState extends State<ElTooltip> with WidgetsBindingObserver {
     );
 
     if (_overlayEntry != null) {
-      overlayState.insert(_overlayEntry!);
+      overlayState?.insert(_overlayEntry!);
     }
 
     // Add timeout for the tooltip to disapear after a few seconds
