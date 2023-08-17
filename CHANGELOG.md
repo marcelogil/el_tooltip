@@ -1,3 +1,13 @@
+## 2.0.0
+
+* **BREAKING CHANGES** Updated: `padding` is now a `EdgeInsetsGeometry` and `timeout` is now a `Duration`.
+* Added: Modal configuration.
+* Added: Animation controlled by `appearAnimationDuration` and `disappearAnimationDuration`.
+* Added: `showArrow` and `showChildAbobeOverlay` for more customization options.
+    - Fix: [#12](https://github.com/marcelogil/el_tooltip/issues/12)
+* Added: ElTooltipController to help show and hide the tooltip. 
+    - Fix: [#10](https://github.com/marcelogil/el_tooltip/issues/10) and [#9](https://github.com/marcelogil/el_tooltip/issues/9)
+
 ## 1.0.8
 
 * Fix: Updated NULL check with correct object.

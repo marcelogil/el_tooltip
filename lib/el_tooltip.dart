@@ -1,5 +1,6 @@
 library el_tooltip;
 
+import 'package:el_tooltip/src/el_tooltip_controller.dart';
 import 'package:el_tooltip/src/el_tooltip_overlay.dart';
 import 'package:flutter/material.dart';
 
@@ -11,7 +12,9 @@ import 'src/modal_configuration.dart';
 import 'src/position_manager.dart';
 import 'src/tooltip_elements_display.dart';
 
+export 'src/el_tooltip_controller.dart';
 export 'src/enum/el_tooltip_position.dart';
+export 'src/enum/el_tooltip_status.dart';
 export 'src/modal_configuration.dart';
 
 /// Widget that displays a tooltip
@@ -32,6 +35,7 @@ class ElTooltip extends StatefulWidget {
     this.timeout = Duration.zero,
     this.appearAnimationDuration = Duration.zero,
     this.disappearAnimationDuration = Duration.zero,
+    this.controller,
     super.key,
   });
 
@@ -82,6 +86,9 @@ class ElTooltip extends StatefulWidget {
   /// The default value is 0 which means it doesn't animate
   final Duration disappearAnimationDuration;
 
+  /// [controller] Controller that allows to show or hide the tooltip
+  final ElTooltipController? controller;
+
   @override
   State<ElTooltip> createState() => _ElTooltipState();
 }
@@ -90,8 +97,11 @@ class ElTooltip extends StatefulWidget {
 class _ElTooltipState extends State<ElTooltip> with WidgetsBindingObserver {
   final ElementBox _arrowBox = ElementBox(h: 10.0, w: 16.0);
   ElementBox _overlayBox = ElementBox(h: 0.0, w: 0.0);
+
   OverlayEntry? _overlayEntry;
   OverlayEntry? _overlayEntryHidden;
+  GlobalKey<ElTooltipOverlayState>? _overlayKey;
+
   final GlobalKey _widgetKey = GlobalKey();
 
   /// Automatically hide the overlay when the screen dimension changes
@@ -115,6 +125,7 @@ class _ElTooltipState extends State<ElTooltip> with WidgetsBindingObserver {
     WidgetsBinding.instance
         .addPostFrameCallback((_) => _loadHiddenOverlay(context));
     WidgetsBinding.instance.addObserver(this);
+    widget.controller?.attach(show: _showOverlay, hide: _hideOverlay);
   }
 
   ElementBox get _screenSize => _getScreenSize();
@@ -190,7 +201,7 @@ class _ElTooltipState extends State<ElTooltip> with WidgetsBindingObserver {
       _overlayEntry != null ? _hideOverlay() : _showOverlay(context);
 
   /// Loads the tooltip into view
-  void _showOverlay(BuildContext context) async {
+  Future<void> _showOverlay(BuildContext context) async {
     final overlayState = Overlay.of(context);
 
     /// By calling [PositionManager.load()] we get returned the position
@@ -204,8 +215,11 @@ class _ElTooltipState extends State<ElTooltip> with WidgetsBindingObserver {
       radius: widget.radius,
     ).load(preferredPosition: widget.position);
 
+    _overlayKey = GlobalKey<ElTooltipOverlayState>();
+
     _overlayEntry = OverlayEntry(
       builder: (context) => ElTooltipOverlay(
+        key: _overlayKey,
         toolTipElementsDisplay: toolTipElementsDisplay,
         color: widget.color,
         content: widget.content,
@@ -234,7 +248,12 @@ class _ElTooltipState extends State<ElTooltip> with WidgetsBindingObserver {
   }
 
   /// Method to hide the tooltip
-  void _hideOverlay() {
+  Future<void> _hideOverlay() async {
+    final state = _overlayKey?.currentState;
+    if (state != null) {
+      await state.hide();
+      _overlayKey = null;
+    }
     if (_overlayEntry != null) {
       _overlayEntry?.remove();
       _overlayEntry = null;

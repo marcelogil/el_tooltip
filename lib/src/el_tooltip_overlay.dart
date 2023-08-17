@@ -71,52 +71,83 @@ class ElTooltipOverlay extends StatefulWidget {
   final Duration disappearAnimationDuration;
 
   @override
-  State<ElTooltipOverlay> createState() => _ElTooltipOverlayState();
+  State<ElTooltipOverlay> createState() => ElTooltipOverlayState();
 }
 
-class _ElTooltipOverlayState extends State<ElTooltipOverlay> {
+class ElTooltipOverlayState extends State<ElTooltipOverlay> {
+  bool closing = false;
+  double opacity = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    show();
+  }
+
+  Future<void> show() async {
+    setState(() {
+      closing = false;
+      opacity = 1;
+    });
+    await Future.delayed(widget.appearAnimationDuration);
+  }
+
+  Future<void> hide() async {
+    setState(() {
+      closing = true;
+      opacity = 0;
+    });
+    await Future.delayed(widget.disappearAnimationDuration);
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Modal(
-          color: widget.modalConfiguration.color,
-          opacity: widget.modalConfiguration.opacity,
-          visible: widget.showModal,
-          onTap: widget.hideOverlay,
-        ),
-        Positioned(
-          top: widget.toolTipElementsDisplay.bubble.y,
-          left: widget.toolTipElementsDisplay.bubble.x,
-          child: Bubble(
-            triggerBox: widget.triggerBox,
-            padding: widget.padding,
-            radius: widget.toolTipElementsDisplay.radius,
-            color: widget.color,
-            child: widget.content,
+    return AnimatedOpacity(
+      opacity: opacity,
+      duration: closing
+          ? widget.disappearAnimationDuration
+          : widget.appearAnimationDuration,
+      child: Stack(
+        children: [
+          Modal(
+            color: widget.modalConfiguration.color,
+            opacity: widget.modalConfiguration.opacity,
+            visible: widget.showModal,
+            onTap: widget.hideOverlay,
           ),
-        ),
-        if (widget.showArrow)
           Positioned(
-            top: widget.toolTipElementsDisplay.arrow.y,
-            left: widget.toolTipElementsDisplay.arrow.x,
-            child: Arrow(
+            top: widget.toolTipElementsDisplay.bubble.y,
+            left: widget.toolTipElementsDisplay.bubble.x,
+            child: Bubble(
+              triggerBox: widget.triggerBox,
+              padding: widget.padding,
+              radius: widget.toolTipElementsDisplay.radius,
               color: widget.color,
-              position: widget.toolTipElementsDisplay.position,
-              width: widget.arrowBox.w,
-              height: widget.arrowBox.h,
+              child: widget.content,
             ),
           ),
-        if (widget.showChildAboveOverlay)
-          Positioned(
-            top: widget.triggerBox.y,
-            left: widget.triggerBox.x,
-            child: GestureDetector(
-              onTap: widget.hideOverlay,
-              child: widget.child,
+          if (widget.showArrow)
+            Positioned(
+              top: widget.toolTipElementsDisplay.arrow.y,
+              left: widget.toolTipElementsDisplay.arrow.x,
+              child: Arrow(
+                color: widget.color,
+                position: widget.toolTipElementsDisplay.position,
+                width: widget.arrowBox.w,
+                height: widget.arrowBox.h,
+              ),
             ),
-          ),
-      ],
+          if (widget.showChildAboveOverlay)
+            Positioned(
+              top: widget.triggerBox.y,
+              left: widget.triggerBox.x,
+              child: GestureDetector(
+                onTap: widget.hideOverlay,
+                child: widget.child,
+              ),
+            ),
+        ],
+      ),
     );
   }
 }
