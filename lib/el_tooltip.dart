@@ -24,7 +24,7 @@ class ElTooltip extends StatefulWidget {
     this.position = ElTooltipPosition.topCenter,
     this.radius = 8.0,
     this.showModal = true,
-    this.timeout = 0,
+    this.timeout = Duration.zero,
     super.key,
   });
 
@@ -55,7 +55,7 @@ class ElTooltip extends StatefulWidget {
 
   /// [timeout] Number of seconds until the tooltip disappears automatically
   /// The default value is 0 (zero) which means it never disappears.
-  final int timeout;
+  final Duration timeout;
 
   @override
   State<ElTooltip> createState() => _ElTooltipState();
@@ -230,9 +230,8 @@ class _ElTooltipState extends State<ElTooltip> with WidgetsBindingObserver {
     }
 
     // Add timeout for the tooltip to disapear after a few seconds
-    if (widget.timeout > 0) {
-      await Future.delayed(Duration(seconds: widget.timeout))
-          .whenComplete(() => _hideOverlay());
+    if (widget.timeout > Duration.zero) {
+      await Future.delayed(widget.timeout).whenComplete(() => _hideOverlay());
     }
   }
 
