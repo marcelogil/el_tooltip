@@ -1,6 +1,7 @@
 library el_tooltip;
 
 import 'package:flutter/material.dart';
+
 import 'src/arrow.dart';
 import 'src/bubble.dart';
 import 'src/element_box.dart';
@@ -19,7 +20,7 @@ class ElTooltip extends StatefulWidget {
     required this.child,
     this.color = Colors.white,
     this.distance = 10.0,
-    this.padding = 14.0,
+    this.padding = const EdgeInsets.all(14.0),
     this.position = ElTooltipPosition.topCenter,
     this.radius = 8.0,
     this.showModal = true,
@@ -40,7 +41,7 @@ class ElTooltip extends StatefulWidget {
   final double distance;
 
   /// [padding] Space inside the tooltip - around the content.
-  final double padding;
+  final EdgeInsetsGeometry padding;
 
   /// [position] Desired tooltip position in relationship to the trigger.
   /// The default value it topCenter.
