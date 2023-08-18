@@ -12,7 +12,7 @@ class ElTooltipController extends ValueNotifier<ElTooltipStatus> {
 
   Future<void> show() async {
     await _show();
-    value = ElTooltipStatus.visible;
+    value = ElTooltipStatus.showing;
     notifyListeners();
   }
 
