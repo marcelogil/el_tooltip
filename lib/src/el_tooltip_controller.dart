@@ -1,7 +1,7 @@
 import 'package:el_tooltip/src/enum/el_tooltip_status.dart';
 import 'package:flutter/material.dart';
 
-typedef ShowElTooltip = Future<void> Function(BuildContext);
+typedef ShowElTooltip = Future<void> Function();
 typedef HideElTooltip = Future<void> Function();
 
 class ElTooltipController extends ValueNotifier<ElTooltipStatus> {
@@ -13,7 +13,7 @@ class ElTooltipController extends ValueNotifier<ElTooltipStatus> {
   late ShowElTooltip show;
   late HideElTooltip hide;
 
-  static Future<void> _defaultThrow([_]) {
+  static Future<void> _defaultThrow() {
     throw StateError('Attach the controller to an El Tooltip Widget');
   }
 

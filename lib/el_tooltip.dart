@@ -201,7 +201,8 @@ class _ElTooltipState extends State<ElTooltip> with WidgetsBindingObserver {
       _overlayEntry != null ? _hideOverlay() : _showOverlay(context);
 
   /// Loads the tooltip into view
-  Future<void> _showOverlay(BuildContext context) async {
+  Future<void> _showOverlay([BuildContext? context]) async {
+    context ??= this.context;
     final overlayState = Overlay.of(context);
 
     /// By calling [PositionManager.load()] we get returned the position

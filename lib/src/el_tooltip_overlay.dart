@@ -81,7 +81,7 @@ class ElTooltipOverlayState extends State<ElTooltipOverlay> {
   @override
   void initState() {
     super.initState();
-    show();
+    WidgetsBinding.instance.addPostFrameCallback((_) async => show());
   }
 
   Future<void> show() async {
