@@ -6,12 +6,24 @@ typedef HideElTooltip = Future<void> Function();
 
 class ElTooltipController extends ValueNotifier<ElTooltipStatus> {
   ElTooltipController()
-      : show = _defaultThrow,
-        hide = _defaultThrow,
+      : _show = _defaultThrow,
+        _hide = _defaultThrow,
         super(ElTooltipStatus.hidden);
 
-  late ShowElTooltip show;
-  late HideElTooltip hide;
+  Future<void> show() async {
+    await _show();
+    value = ElTooltipStatus.visible;
+    notifyListeners();
+  }
+
+  Future<void> hide() async {
+    await _hide();
+    value = ElTooltipStatus.hidden;
+    notifyListeners();
+  }
+
+  late ShowElTooltip _show;
+  late HideElTooltip _hide;
 
   static Future<void> _defaultThrow() {
     throw StateError('Attach the controller to an El Tooltip Widget');
@@ -19,7 +31,7 @@ class ElTooltipController extends ValueNotifier<ElTooltipStatus> {
 
   @mustCallSuper
   void attach({required ShowElTooltip show, required HideElTooltip hide}) {
-    this.show = show;
-    this.hide = hide;
+    _show = show;
+    _hide = hide;
   }
 }
