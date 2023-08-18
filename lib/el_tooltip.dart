@@ -27,7 +27,7 @@ class ElTooltip extends StatefulWidget {
     this.distance = 10.0,
     this.padding = const EdgeInsets.all(14.0),
     this.position = ElTooltipPosition.topCenter,
-    this.radius = 8.0,
+    this.radius = const Radius.circular(8),
     this.showModal = true,
     this.showArrow = true,
     this.showChildAboveOverlay = true,
@@ -59,7 +59,7 @@ class ElTooltip extends StatefulWidget {
   final ElTooltipPosition position;
 
   /// [radius] Border radius around the tooltip.
-  final double radius;
+  final Radius radius;
 
   /// [showModal] Shows a dark layer behind the tooltip.
   final bool showModal;

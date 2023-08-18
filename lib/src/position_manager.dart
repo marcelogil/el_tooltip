@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'element_box.dart';
 import 'enum/el_tooltip_position.dart';
 import 'tooltip_elements_display.dart';
@@ -23,7 +24,7 @@ class PositionManager {
   final double distance;
 
   /// [radius] border radius amount of the tooltip.
-  final double radius;
+  final Radius radius;
 
   PositionManager({
     required this.arrowBox,
@@ -31,7 +32,7 @@ class PositionManager {
     required this.overlayBox,
     required this.screenSize,
     this.distance = 0.0,
-    this.radius = 0.0,
+    this.radius = Radius.zero,
   });
 
   ToolTipElementsDisplay _topStart() {
@@ -50,10 +51,10 @@ class PositionManager {
       ),
       position: ElTooltipPosition.topStart,
       radius: BorderRadius.only(
-        topLeft: Radius.circular(radius),
-        topRight: Radius.circular(radius),
+        topLeft: radius,
+        topRight: radius,
         bottomLeft: Radius.zero,
-        bottomRight: Radius.circular(radius),
+        bottomRight: radius,
       ),
     );
   }
@@ -74,7 +75,7 @@ class PositionManager {
         y: triggerBox.y - overlayBox.h - distance - arrowBox.h,
       ),
       position: ElTooltipPosition.topCenter,
-      radius: BorderRadius.all(Radius.circular(radius)),
+      radius: BorderRadius.all(radius),
     );
   }
 
@@ -94,9 +95,9 @@ class PositionManager {
       ),
       position: ElTooltipPosition.topEnd,
       radius: BorderRadius.only(
-        topLeft: Radius.circular(radius),
-        topRight: Radius.circular(radius),
-        bottomLeft: Radius.circular(radius),
+        topLeft: radius,
+        topRight: radius,
+        bottomLeft: radius,
         bottomRight: Radius.zero,
       ),
     );
@@ -119,9 +120,9 @@ class PositionManager {
       position: ElTooltipPosition.bottomStart,
       radius: BorderRadius.only(
         topLeft: Radius.zero,
-        topRight: Radius.circular(radius),
-        bottomLeft: Radius.circular(radius),
-        bottomRight: Radius.circular(radius),
+        topRight: radius,
+        bottomLeft: radius,
+        bottomRight: radius,
       ),
     );
   }
@@ -142,7 +143,7 @@ class PositionManager {
         y: triggerBox.y + triggerBox.h + distance + arrowBox.h,
       ),
       position: ElTooltipPosition.bottomCenter,
-      radius: BorderRadius.all(Radius.circular(radius)),
+      radius: BorderRadius.all(radius),
     );
   }
 
@@ -162,10 +163,10 @@ class PositionManager {
       ),
       position: ElTooltipPosition.bottomEnd,
       radius: BorderRadius.only(
-        topLeft: Radius.circular(radius),
+        topLeft: radius,
         topRight: Radius.zero,
-        bottomLeft: Radius.circular(radius),
-        bottomRight: Radius.circular(radius),
+        bottomLeft: radius,
+        bottomRight: radius,
       ),
     );
   }
@@ -187,10 +188,10 @@ class PositionManager {
       ),
       position: ElTooltipPosition.leftStart,
       radius: BorderRadius.only(
-        topLeft: Radius.circular(radius),
+        topLeft: radius,
         topRight: Radius.zero,
-        bottomLeft: Radius.circular(radius),
-        bottomRight: Radius.circular(radius),
+        bottomLeft: radius,
+        bottomRight: radius,
       ),
     );
   }
@@ -212,7 +213,7 @@ class PositionManager {
         y: triggerBox.y + _half(triggerBox.h) - _half(overlayBox.h),
       ),
       position: ElTooltipPosition.leftCenter,
-      radius: BorderRadius.all(Radius.circular(radius)),
+      radius: BorderRadius.all(radius),
     );
   }
 
@@ -233,9 +234,9 @@ class PositionManager {
       ),
       position: ElTooltipPosition.leftEnd,
       radius: BorderRadius.only(
-        topLeft: Radius.circular(radius),
-        topRight: Radius.circular(radius),
-        bottomLeft: Radius.circular(radius),
+        topLeft: radius,
+        topRight: radius,
+        bottomLeft: radius,
         bottomRight: Radius.zero,
       ),
     );
@@ -259,9 +260,9 @@ class PositionManager {
       position: ElTooltipPosition.rightStart,
       radius: BorderRadius.only(
         topLeft: Radius.zero,
-        topRight: Radius.circular(radius),
-        bottomLeft: Radius.circular(radius),
-        bottomRight: Radius.circular(radius),
+        topRight: radius,
+        bottomLeft: radius,
+        bottomRight: radius,
       ),
     );
   }
@@ -282,7 +283,7 @@ class PositionManager {
         y: triggerBox.y + _half(triggerBox.h) - _half(overlayBox.h),
       ),
       position: ElTooltipPosition.rightCenter,
-      radius: BorderRadius.all(Radius.circular(radius)),
+      radius: BorderRadius.all(radius),
     );
   }
 
@@ -302,10 +303,10 @@ class PositionManager {
       ),
       position: ElTooltipPosition.rightEnd,
       radius: BorderRadius.only(
-        topLeft: Radius.circular(radius),
-        topRight: Radius.circular(radius),
+        topLeft: radius,
+        topRight: radius,
         bottomLeft: Radius.zero,
-        bottomRight: Radius.circular(radius),
+        bottomRight: radius,
       ),
     );
   }
