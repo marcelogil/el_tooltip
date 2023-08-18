@@ -1,6 +1,6 @@
 ## 2.0.0
 
-* **BREAKING CHANGES** Updated: `padding` is now a `EdgeInsetsGeometry` and `timeout` is now a `Duration`.
+* **BREAKING CHANGES** Updated: `padding` is now a `EdgeInsetsGeometry`, `radius` is now a `Radius` and `timeout` is now a `Duration`.
 * Added: Modal configuration.
 * Added: Animation controlled by `appearAnimationDuration` and `disappearAnimationDuration`.
 * Added: `showArrow` and `showChildAbobeOverlay` for more customization options.
