@@ -16,6 +16,13 @@ class ElTooltipController extends ValueNotifier<ElTooltipStatus> {
     notifyListeners();
   }
 
+  void notify(ElTooltipStatus status) {
+    if (value != status) {
+      value = status;
+      notifyListeners();
+    }
+  }
+
   Future<void> hide() async {
     await _hide();
     value = ElTooltipStatus.hidden;

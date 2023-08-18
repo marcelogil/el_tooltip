@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'src/bubble.dart';
 import 'src/element_box.dart';
 import 'src/enum/el_tooltip_position.dart';
+import 'src/enum/el_tooltip_status.dart';
 import 'src/modal.dart';
 import 'src/modal_configuration.dart';
 import 'src/position_manager.dart';
@@ -239,6 +240,7 @@ class _ElTooltipState extends State<ElTooltip> with WidgetsBindingObserver {
     );
 
     if (_overlayEntry != null) {
+      widget.controller?.notify(ElTooltipStatus.showing);
       overlayState.insert(_overlayEntry!);
     }
 
@@ -256,6 +258,7 @@ class _ElTooltipState extends State<ElTooltip> with WidgetsBindingObserver {
       _overlayKey = null;
     }
     if (_overlayEntry != null) {
+      widget.controller?.notify(ElTooltipStatus.hidden);
       _overlayEntry?.remove();
       _overlayEntry = null;
     }
