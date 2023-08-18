@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:el_tooltip/el_tooltip.dart';
+import 'package:flutter/material.dart';
 
 void main() {
   const tooltipContent = Text(
@@ -22,70 +22,70 @@ void main() {
       ),
       home: Scaffold(
         appBar: AppBar(title: const Text('ElTooltip Demo')),
-        body: SafeArea(
+        body: const SafeArea(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Row(
-                children: const [
+                children: [
                   ElTooltip(
                     content: tooltipContent,
-                    child: tooltipIcon,
                     color: Color(0XFFEA4747),
+                    child: tooltipIcon,
                   ),
                   Spacer(),
                   ElTooltip(
                     content: tooltipContent,
-                    child: tooltipIcon,
                     color: Color(0XFFEA4747),
+                    child: tooltipIcon,
                   ),
                   Spacer(),
                   ElTooltip(
                     content: tooltipContent,
-                    child: tooltipIcon,
                     color: Color(0XFFEA4747),
+                    child: tooltipIcon,
                   ),
                 ],
               ),
               Row(
-                children: const [
+                children: [
                   ElTooltip(
                     content: tooltipContent,
-                    child: tooltipIcon,
                     color: Color(0XFFEA4747),
+                    child: tooltipIcon,
                   ),
                   Spacer(),
                   ElTooltip(
                     content: tooltipContent,
-                    child: tooltipIcon,
                     color: Color(0XFFEA4747),
+                    child: tooltipIcon,
                   ),
                   Spacer(),
                   ElTooltip(
                     content: tooltipContent,
-                    child: tooltipIcon,
                     color: Color(0XFFEA4747),
+                    child: tooltipIcon,
                   ),
                 ],
               ),
               Row(
-                children: const [
+                children: [
                   ElTooltip(
                     content: tooltipContent,
-                    child: tooltipIcon,
                     color: Color(0XFFEA4747),
+                    child: tooltipIcon,
                   ),
                   Spacer(),
                   ElTooltip(
                     content: tooltipContent,
-                    child: tooltipIcon,
                     color: Color(0XFFEA4747),
+                    child: tooltipIcon,
                   ),
                   Spacer(),
                   ElTooltip(
                     content: tooltipContent,
-                    child: tooltipIcon,
                     color: Color(0XFFEA4747),
+                    child: tooltipIcon,
                   ),
                 ],
               ),
