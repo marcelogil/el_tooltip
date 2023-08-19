@@ -7,7 +7,7 @@ ElTooltip - a smart positioned tooltip
 ## Why el_tooltip?
 
 - 📦 Add widget elements to your tooltip
-- ↔️ Chose the prefered position for the tooltip to appear relative to the button
+- ↔️ Chose the preferred position for the tooltip to appear relative to the button
 - ↩️ The position changes automagically if the desired one doesn't fit the screen
 - ✅ No external dependencies
 - ❤️ Customizable layout
@@ -78,3 +78,17 @@ void main() {
 
 
 El tooltip header image was created using <a href="https://www.freepik.com/free-vector/mexican-element-set_5970756.htm#query=mexican&position=4&from_view=search&track=sph">macrovector</a> illustration on Freepik
+
+## Contributors ✨
+
+Thanks goes to these wonderful people:
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tr>
+    <td align="center"><a href="https://marcelogil.com"><div style="border-radius:50%; width:100px; height:100px;  overflow: hidden;"><img src="https://avatars.githubusercontent.com/u/3277922?v=4" width="100px;" alt=""/></div><br /><sub><b>Marcelo Gil</b></sub></a><br /><a href="https://github.com/marcelogil/el_tooltip/commits?author=marcelogil" title="Code">💻</a></td>
+    <td align="center"><a href="https://phcs971.github.io"><div style="border-radius:50%; width:100px; height:100px;  overflow: hidden;"><img src="https://avatars.githubusercontent.com/u/48731731?v=4" width="100px;" alt=""/></div><br /><sub><b>Matteo Pietro Dazzi</b></sub></a><br /><a href="https://github.com/marcelogil/el_tooltip/commits?author=phcs971" title="Code">💻</a></td>
+  </tr>
+</table>
