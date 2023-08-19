@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+
 import 'element_box.dart';
 
 /// Bubble serves as the tooltip container
 class Bubble extends StatefulWidget {
   final Color color;
-  final double padding;
+  final EdgeInsetsGeometry padding;
   final double maxWidth;
   final ElementBox triggerBox;
   final BorderRadiusGeometry? radius;
@@ -12,7 +13,7 @@ class Bubble extends StatefulWidget {
 
   const Bubble({
     this.color = Colors.white,
-    this.padding = 10.0,
+    this.padding = const EdgeInsets.all(10.0),
     this.radius = const BorderRadius.all(Radius.circular(0)),
     required this.child,
     required this.triggerBox,
@@ -37,7 +38,7 @@ class _BubbleState extends State<Bubble> {
             borderRadius: widget.radius,
             color: widget.color,
           ),
-          padding: EdgeInsets.all(widget.padding),
+          padding: widget.padding,
           child: widget.child,
         ),
       ),

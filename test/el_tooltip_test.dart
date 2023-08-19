@@ -8,8 +8,7 @@ void main() {
   const key = Key('test');
 
   testWidgets('Provided key is used', (tester) async {
-    await tester.pumpWidget(
-        ElTooltip(key: key, content: Container(), child: Container()));
+    await tester.pumpWidget(TestWidget(content: Container(), tooltipKey: key));
     expect(find.byKey(key), findsOneWidget);
   });
 
@@ -45,9 +44,12 @@ void main() {
 class TestWidget extends StatelessWidget {
   final Widget content;
   final Color color;
+  final Key? tooltipKey;
+
   const TestWidget({
     required this.content,
     this.color = Colors.white,
+    this.tooltipKey,
     super.key,
   });
 
@@ -58,6 +60,7 @@ class TestWidget extends StatelessWidget {
         body: Center(
           child: ElTooltip(
             color: color,
+            key: tooltipKey,
             content: content,
             child: const TestTrigger(),
           ),

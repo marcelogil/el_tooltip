@@ -1,0 +1,1 @@
+enum ElTooltipStatus { showing, hidden }
