@@ -104,9 +104,7 @@ class ElTooltipOverlayState extends State<ElTooltipOverlay> {
   Widget build(BuildContext context) {
     return AnimatedOpacity(
       opacity: opacity,
-      duration: closing
-          ? widget.disappearAnimationDuration
-          : widget.appearAnimationDuration,
+      duration: closing ? widget.disappearAnimationDuration : widget.appearAnimationDuration,
       child: Stack(
         children: [
           Modal(
@@ -118,12 +116,15 @@ class ElTooltipOverlayState extends State<ElTooltipOverlay> {
           Positioned(
             top: widget.toolTipElementsDisplay.bubble.y,
             left: widget.toolTipElementsDisplay.bubble.x,
-            child: Bubble(
-              triggerBox: widget.triggerBox,
-              padding: widget.padding,
-              radius: widget.toolTipElementsDisplay.radius,
-              color: widget.color,
-              child: widget.content,
+            child: GestureDetector(
+              onTap: widget.hideOverlay,
+              child: Bubble(
+                triggerBox: widget.triggerBox,
+                padding: widget.padding,
+                radius: widget.toolTipElementsDisplay.radius,
+                color: widget.color,
+                child: widget.content,
+              ),
             ),
           ),
           if (widget.showArrow)
@@ -143,7 +144,9 @@ class ElTooltipOverlayState extends State<ElTooltipOverlay> {
               left: widget.triggerBox.x,
               child: GestureDetector(
                 onTap: widget.hideOverlay,
-                child: widget.child,
+                child: IgnorePointer(
+                  child: widget.child,
+                ),
               ),
             ),
         ],
