@@ -6,6 +6,8 @@ import 'package:el_tooltip/src/modal.dart';
 import 'package:el_tooltip/src/tooltip_elements_display.dart';
 import 'package:flutter/material.dart';
 
+typedef DismissCallback = void Function(bool val);
+
 class ElTooltipOverlay extends StatefulWidget {
   const ElTooltipOverlay({
     super.key,
@@ -23,6 +25,7 @@ class ElTooltipOverlay extends StatefulWidget {
     required this.arrowBox,
     required this.appearAnimationDuration,
     required this.disappearAnimationDuration,
+    required this.onDismiss,
   });
 
   /// [child] Widget that will trigger the tooltip to appear.
@@ -70,6 +73,9 @@ class ElTooltipOverlay extends StatefulWidget {
   /// The default value is 0 which means it doesn't animate
   final Duration disappearAnimationDuration;
 
+  /// Function called on dismiss.
+  final DismissCallback onDismiss;
+
   @override
   State<ElTooltipOverlay> createState() => ElTooltipOverlayState();
 }
@@ -98,6 +104,7 @@ class ElTooltipOverlayState extends State<ElTooltipOverlay> {
       opacity = 0;
     });
     await Future.delayed(widget.disappearAnimationDuration);
+    widget.onDismiss(true);
   }
 
   @override
