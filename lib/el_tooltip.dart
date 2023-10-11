@@ -18,12 +18,15 @@ export 'src/enum/el_tooltip_position.dart';
 export 'src/enum/el_tooltip_status.dart';
 export 'src/modal_configuration.dart';
 
+typedef DismissCallback = void Function(bool val);
+
 /// Widget that displays a tooltip
 /// It takes a widget as the trigger and a widget as the content
 class ElTooltip extends StatefulWidget {
   const ElTooltip({
     required this.content,
     required this.child,
+    required this.onDismiss,
     this.color = Colors.white,
     this.distance = 10.0,
     this.padding = const EdgeInsets.all(14.0),
@@ -90,6 +93,9 @@ class ElTooltip extends StatefulWidget {
   /// [controller] Controller that allows to show or hide the tooltip
   final ElTooltipController? controller;
 
+  /// Function called on dismiss.
+  final DismissCallback onDismiss;
+
   @override
   State<ElTooltip> createState() => _ElTooltipState();
 }
@@ -123,8 +129,7 @@ class _ElTooltipState extends State<ElTooltip> with WidgetsBindingObserver {
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance
-        .addPostFrameCallback((_) => _loadHiddenOverlay(context));
+    WidgetsBinding.instance.addPostFrameCallback((_) => _loadHiddenOverlay(context));
     WidgetsBinding.instance.addObserver(this);
     widget.controller?.attach(show: _showOverlay, hide: _hideOverlay);
   }
@@ -152,8 +157,7 @@ class _ElTooltipState extends State<ElTooltip> with WidgetsBindingObserver {
     OverlayState? overlayStateHidden = Overlay.of(context);
     _overlayEntryHidden = OverlayEntry(
       builder: (context) {
-        WidgetsBinding.instance
-            .addPostFrameCallback((_) => _getHiddenOverlaySize(context));
+        WidgetsBinding.instance.addPostFrameCallback((_) => _getHiddenOverlaySize(context));
         return Opacity(
           opacity: 0,
           child: Center(
@@ -198,8 +202,7 @@ class _ElTooltipState extends State<ElTooltip> with WidgetsBindingObserver {
   }
 
   /// Hides or shows the tooltip
-  void _toggleOverlay(BuildContext context) =>
-      _overlayEntry != null ? _hideOverlay() : _showOverlay(context);
+  void _toggleOverlay(BuildContext context) => _overlayEntry != null ? _hideOverlay() : _showOverlay(context);
 
   /// Loads the tooltip into view
   Future<void> _showOverlay([BuildContext? context]) async {
@@ -255,6 +258,7 @@ class _ElTooltipState extends State<ElTooltip> with WidgetsBindingObserver {
     final state = _overlayKey?.currentState;
     if (state != null) {
       await state.hide();
+      widget.onDismiss(true);
       _overlayKey = null;
     }
     if (_overlayEntry != null) {
