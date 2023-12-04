@@ -154,6 +154,7 @@ class _ElTooltipState extends State<ElTooltip> with WidgetsBindingObserver {
 
   /// Loads the tooltip without opacity to measure the rendered size
   void _loadHiddenOverlay(_) {
+    if (!mounted) return;
     OverlayState? overlayStateHidden = Overlay.of(context);
     _overlayEntryHidden = OverlayEntry(
       builder: (context) {
@@ -206,6 +207,7 @@ class _ElTooltipState extends State<ElTooltip> with WidgetsBindingObserver {
 
   /// Loads the tooltip into view
   Future<void> _showOverlay([BuildContext? context]) async {
+    if (!mounted) return;
     context ??= this.context;
     final overlayState = Overlay.of(context);
 
@@ -255,6 +257,7 @@ class _ElTooltipState extends State<ElTooltip> with WidgetsBindingObserver {
 
   /// Method to hide the tooltip
   Future<void> _hideOverlay() async {
+    if (!mounted) return;
     final state = _overlayKey?.currentState;
     if (state != null) {
       await state.hide();
