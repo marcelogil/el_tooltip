@@ -131,7 +131,9 @@ class _ElTooltipState extends State<ElTooltip> with WidgetsBindingObserver {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) => _loadHiddenOverlay(context));
     WidgetsBinding.instance.addObserver(this);
-    widget.controller?.attach(show: _showOverlay, hide: _hideOverlay);
+    if (mounted) {
+      widget.controller?.attach(show: _showOverlay, hide: _hideOverlay);
+    }
   }
 
   ElementBox get _screenSize => _getScreenSize();
@@ -207,7 +209,6 @@ class _ElTooltipState extends State<ElTooltip> with WidgetsBindingObserver {
 
   /// Loads the tooltip into view
   Future<void> _showOverlay([BuildContext? context]) async {
-    if (!mounted) return;
     context ??= this.context;
     final overlayState = Overlay.of(context);
 
@@ -257,7 +258,6 @@ class _ElTooltipState extends State<ElTooltip> with WidgetsBindingObserver {
 
   /// Method to hide the tooltip
   Future<void> _hideOverlay() async {
-    if (!mounted) return;
     final state = _overlayKey?.currentState;
     if (state != null) {
       await state.hide();
