@@ -395,6 +395,6 @@ class PositionManager {
 
     return _fitsScreen(elementPosition)
         ? elementPosition
-        : _firstAvailablePosition();
+        : _bottomEnd();
   }
 }
