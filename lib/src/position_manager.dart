@@ -328,7 +328,7 @@ class PositionManager {
   /// Tests each possible position until it finds one that fits.
   ToolTipElementsDisplay _firstAvailablePosition() {
     List<ToolTipElementsDisplay Function()> positions = [
-      _bottomEnd,
+      _topCenter,
       _bottomCenter,
       _leftCenter,
       _rightCenter,
@@ -344,7 +344,7 @@ class PositionManager {
     for (var position in positions) {
       if (_fitsScreen(position())) return position();
     }
-    return _bottomEnd();
+    return _topCenter();
   }
 
   /// Load the calculated tooltip position
