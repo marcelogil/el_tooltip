@@ -328,7 +328,7 @@ class PositionManager {
   /// Tests each possible position until it finds one that fits.
   ToolTipElementsDisplay _firstAvailablePosition() {
     List<ToolTipElementsDisplay Function()> positions = [
-      _topCenter,
+      _bottomEnd,
       _bottomCenter,
       _leftCenter,
       _rightCenter,
