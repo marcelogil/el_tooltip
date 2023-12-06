@@ -344,7 +344,7 @@ class PositionManager {
     for (var position in positions) {
       if (_fitsScreen(position())) return position();
     }
-    return _topCenter();
+    return _bottomEnd();
   }
 
   /// Load the calculated tooltip position
@@ -395,6 +395,6 @@ class PositionManager {
 
     return _fitsScreen(elementPosition)
         ? elementPosition
-        : _bottomEnd();
+        : _firstAvailablePosition();
   }
 }
