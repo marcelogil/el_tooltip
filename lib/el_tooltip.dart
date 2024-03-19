@@ -237,6 +237,7 @@ class _ElTooltipState extends State<ElTooltip> with WidgetsBindingObserver {
         showModal: widget.showModal,
         appearAnimationDuration: widget.appearAnimationDuration,
         disappearAnimationDuration: widget.disappearAnimationDuration,
+        maxWidth: widget.maxWidth,
         child: widget.child,
       ),
     );
