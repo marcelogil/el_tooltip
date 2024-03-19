@@ -57,6 +57,7 @@ void main() {
 | ----------------------- | -------- | ------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | content   | true  |  | What will appear inside the tooltip. |
 | child     | true  |  | Widget that represent the button to activate the tooltip (no click method required). |
+| maxWidth  | false | `300` | Maximum width of the tooltip bubble. |
 | color     | false | `Colors.white` | Background color of the bubble and the arrow. |
 | distance  | false | `10.0` | Space between the child button and the tooltip. |
 | padding   | false | `EdgeInsets.all(14.0)` | Tooltip padding around the content widget. |
