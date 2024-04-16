@@ -105,11 +105,15 @@ class _ElTooltipState extends State<ElTooltip> with WidgetsBindingObserver {
 
   final GlobalKey _widgetKey = GlobalKey();
 
+  bool initial = true;
+
   /// Automatically hide the overlay when the screen dimension changes
   /// or when the user scrolls. This is done to avoid displacement.
   @override
   void didChangeMetrics() {
-    _hideOverlay();
+    // do not hide the overlay if it's the first time it's shown
+    if (!initial) _hideOverlay();
+    setState(() => initial = false);
   }
 
   /// Dispose the observer
@@ -203,6 +207,9 @@ class _ElTooltipState extends State<ElTooltip> with WidgetsBindingObserver {
 
   /// Loads the tooltip into view
   Future<void> _showOverlay([BuildContext? context]) async {
+    // fix for disappearing tooltip
+    setState(() => initial = true);
+
     context ??= this.context;
     final overlayState = Overlay.of(context);
 
