@@ -10,6 +10,7 @@ class ElTooltipOverlay extends StatefulWidget {
   const ElTooltipOverlay({
     super.key,
     required this.child,
+    this.maxWidth = 300.0,
     this.padding = const EdgeInsets.all(14.0),
     this.showModal = true,
     this.showArrow = true,
@@ -33,6 +34,9 @@ class ElTooltipOverlay extends StatefulWidget {
 
   /// [content] Widget that appears inside the tooltip.
   final Widget content;
+
+  /// [maxWidth] of the tooltip bubble.
+  final double maxWidth;
 
   /// [padding] Space inside the tooltip - around the content.
   final EdgeInsetsGeometry padding;
@@ -104,9 +108,7 @@ class ElTooltipOverlayState extends State<ElTooltipOverlay> {
   Widget build(BuildContext context) {
     return AnimatedOpacity(
       opacity: opacity,
-      duration: closing
-          ? widget.disappearAnimationDuration
-          : widget.appearAnimationDuration,
+      duration: closing ? widget.disappearAnimationDuration : widget.appearAnimationDuration,
       child: Stack(
         children: [
           Modal(
@@ -123,6 +125,7 @@ class ElTooltipOverlayState extends State<ElTooltipOverlay> {
               padding: widget.padding,
               radius: widget.toolTipElementsDisplay.radius,
               color: widget.color,
+              maxWidth: widget.maxWidth,
               child: widget.content,
             ),
           ),
