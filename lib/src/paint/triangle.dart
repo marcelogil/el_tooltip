@@ -10,7 +10,7 @@ class Triangle extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     Paint paint = Paint();
-    paint.isAntiAlias = true;
+    paint.isAntiAlias = false;
     paint.color = color;
     Path path = Path();
 

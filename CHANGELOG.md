@@ -1,3 +1,7 @@
+## 2.2.0
+
+- Fix: Remove empty pixel showing between the arrow and the bubble on some devices.
+
 ## 2.1.0
 
 - Fix: Problem with elements remaining in the screen while invisible causing clicking issues. Thanks @appinteractive.

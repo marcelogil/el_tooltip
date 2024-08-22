@@ -41,7 +41,7 @@ class PositionManager {
         w: overlayBox.w,
         h: overlayBox.h,
         x: (triggerBox.x + _half(triggerBox.w)).floorToDouble(),
-        y: (triggerBox.y - distance - arrowBox.h).floorToDouble(),
+        y: (triggerBox.y - distance - arrowBox.h).floorToDouble() - 1,
       ),
       bubble: ElementBox(
         w: overlayBox.w,
@@ -66,7 +66,7 @@ class PositionManager {
         h: arrowBox.h,
         x: (triggerBox.x + _half(triggerBox.w) - _half(arrowBox.w))
             .floorToDouble(),
-        y: (triggerBox.y - distance - arrowBox.h).floorToDouble(),
+        y: (triggerBox.y - distance - arrowBox.h).floorToDouble() - 1,
       ),
       bubble: ElementBox(
         w: overlayBox.w,
@@ -85,7 +85,7 @@ class PositionManager {
         w: arrowBox.w,
         h: arrowBox.h,
         x: (triggerBox.x + _half(triggerBox.w) - arrowBox.w).floorToDouble(),
-        y: (triggerBox.y - distance - arrowBox.h).floorToDouble(),
+        y: (triggerBox.y - distance - arrowBox.h).floorToDouble() - 1,
       ),
       bubble: ElementBox(
         w: arrowBox.w,
