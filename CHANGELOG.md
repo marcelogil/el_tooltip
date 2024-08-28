@@ -1,3 +1,7 @@
+## 2.2.1
+
+- Fix: Bug creating errors during test.
+
 ## 2.2.0
 
 - Fix: Remove empty pixel showing between the arrow and the bubble on some devices.

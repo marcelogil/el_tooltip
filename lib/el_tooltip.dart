@@ -120,8 +120,7 @@ class _ElTooltipState extends State<ElTooltip> with WidgetsBindingObserver {
   @override
   void dispose() {
     WidgetsBinding.instance.removeObserver(this);
-    // remove the overlay after hiding it
-    _hideOverlay().then((_) => _overlayEntryHidden?.remove());
+    _overlayEntry?.remove();
     super.dispose();
   }
 
