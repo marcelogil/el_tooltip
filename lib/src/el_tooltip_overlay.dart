@@ -23,6 +23,8 @@ class ElTooltipOverlay extends StatefulWidget {
     required this.arrowBox,
     required this.appearAnimationDuration,
     required this.disappearAnimationDuration,
+    this.arrowWrapBuilder,
+    this.contentWrapBuilder,
   });
 
   /// [child] Widget that will trigger the tooltip to appear.
@@ -70,6 +72,12 @@ class ElTooltipOverlay extends StatefulWidget {
   /// The default value is 0 which means it doesn't animate
   final Duration disappearAnimationDuration;
 
+  /// [arrowWrapBuilder] Builder that wraps the arrow
+  final TransitionBuilder? arrowWrapBuilder;
+
+  /// [contentWrapBuilder] Builder that wraps the content
+  final TransitionBuilder? contentWrapBuilder;
+
   @override
   State<ElTooltipOverlay> createState() => ElTooltipOverlayState();
 }
@@ -102,6 +110,15 @@ class ElTooltipOverlayState extends State<ElTooltipOverlay> {
 
   @override
   Widget build(BuildContext context) {
+    Widget arrow = Arrow(
+      color: widget.color,
+      position: widget.toolTipElementsDisplay.position,
+      width: widget.arrowBox.w,
+      height: widget.arrowBox.h,
+    );
+    if (widget.arrowWrapBuilder != null) {
+      arrow = widget.arrowWrapBuilder!(context, arrow);
+    }
     return AnimatedOpacity(
       opacity: opacity,
       duration: closing
@@ -123,6 +140,7 @@ class ElTooltipOverlayState extends State<ElTooltipOverlay> {
               padding: widget.padding,
               radius: widget.toolTipElementsDisplay.radius,
               color: widget.color,
+              contentWrapBuilder: widget.contentWrapBuilder,
               child: widget.content,
             ),
           ),
@@ -130,12 +148,7 @@ class ElTooltipOverlayState extends State<ElTooltipOverlay> {
             Positioned(
               top: widget.toolTipElementsDisplay.arrow.y,
               left: widget.toolTipElementsDisplay.arrow.x,
-              child: Arrow(
-                color: widget.color,
-                position: widget.toolTipElementsDisplay.position,
-                width: widget.arrowBox.w,
-                height: widget.arrowBox.h,
-              ),
+              child: arrow,
             ),
           if (widget.showChildAboveOverlay)
             Positioned(

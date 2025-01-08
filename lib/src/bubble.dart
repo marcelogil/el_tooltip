@@ -10,6 +10,8 @@ class Bubble extends StatefulWidget {
   final ElementBox triggerBox;
   final BorderRadiusGeometry? radius;
   final Widget child;
+  /// [contentWrapBuilder] Builder that wraps the content
+  final TransitionBuilder? contentWrapBuilder;
 
   const Bubble({
     this.color = Colors.white,
@@ -18,6 +20,7 @@ class Bubble extends StatefulWidget {
     required this.child,
     required this.triggerBox,
     this.maxWidth = 300.0,
+    this.contentWrapBuilder,
     super.key,
   });
 
@@ -28,19 +31,23 @@ class Bubble extends StatefulWidget {
 class _BubbleState extends State<Bubble> {
   @override
   Widget build(BuildContext context) {
+    Widget content = Container(
+      constraints: BoxConstraints(maxWidth: widget.maxWidth),
+      decoration: BoxDecoration(
+        borderRadius: widget.radius,
+        color: widget.color,
+      ),
+      padding: widget.padding,
+      child: widget.child,
+    );
+    if (widget.contentWrapBuilder != null) {
+      content = widget.contentWrapBuilder!(context, content);
+    }
     return Material(
       color: Colors.transparent,
       child: Opacity(
         opacity: 1.0,
-        child: Container(
-          constraints: BoxConstraints(maxWidth: widget.maxWidth),
-          decoration: BoxDecoration(
-            borderRadius: widget.radius,
-            color: widget.color,
-          ),
-          padding: widget.padding,
-          child: widget.child,
-        ),
+        child: content,
       ),
     );
   }
