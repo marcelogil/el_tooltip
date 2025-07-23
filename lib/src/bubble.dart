@@ -33,7 +33,9 @@ class _BubbleState extends State<Bubble> {
       child: Opacity(
         opacity: 1.0,
         child: Container(
-          constraints: BoxConstraints(maxWidth: widget.maxWidth),
+          constraints: BoxConstraints(
+            maxWidth: MediaQuery.of(context).size.width / 2,
+          ),
           decoration: BoxDecoration(
             borderRadius: widget.radius,
             color: widget.color,
